@@ -118,7 +118,7 @@
             <li class="list-inline-item">
               <a
                 class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-                href=""
+                href="{% url 'view_bag' %}"
               >
                 <div class="text-center">
                   <div><i class="fas fa-shopping-bag fa-lg"></i></div>
@@ -145,8 +145,8 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          {% include 'includes/mobile-top-header.html' %} 
-          {% include 'includes/main-nav.html' %}
+          {% include 'includes/mobile-top-header.html' %} {% include
+          'includes/main-nav.html' %}
         </nav>
       </div>
       <div id="delivery-banner" class="row text-center">
@@ -160,7 +160,15 @@
 
     {% if messages %}
     <div class="message-container"></div>
-    {% endif %} {% block page_header %} {% endblock %} {% block content %}
-    {% endblock %} {% block postloadjs %} {% endblock %}
+    {% endif %} 
+    
+    {% block page_header %} 
+    {% endblock %} 
+    
+    {% block content %} 
+    {% endblock %} 
+    
+    {% block postloadjs %} 
+    {% endblock %}
   </body>
 </html>
