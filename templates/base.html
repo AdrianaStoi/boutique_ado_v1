@@ -60,7 +60,7 @@
           </a>
         </div>
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-          <form method="GET" action="">
+          <form method="GET" action="{% url 'products' %}">
             <div class="input-group w-100">
               <input
                 class="form-control border border-black rounded-0"
@@ -123,8 +123,8 @@
                 <div class="text-center">
                   <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                   <p class="my-0">
-                    {% if grand_total %} ${{ grand_total|floatformat:2 }} {%
-                    else %} $0.00 {% endif %}
+                    {% if grand_total %} ${{ grand_total|floatformat:2 }} 
+                    {% else %} $0.00 {% endif %}
                   </p>
                 </div>
               </a>
@@ -160,15 +160,7 @@
 
     {% if messages %}
     <div class="message-container"></div>
-    {% endif %} 
-    
-    {% block page_header %} 
-    {% endblock %} 
-    
-    {% block content %} 
-    {%endblock %} 
-    
-    {% block postloadjs %} 
-    {% endblock %}
+    {% endif %} {% block page_header %} {% endblock %} {% block content %}
+    {% endblock %} {% block postloadjs %} {% endblock %}
   </body>
 </html>
