@@ -54,7 +54,7 @@
   </a>
   <div class="dropdown-menu border-0" aria-labelledby="user-options">
     {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
-    <a href="{% url 'account_logout' %}" class="dropdown-item"
+    <a href="{% url 'add_product' %}" class="dropdown-item"
       >Product Management</a
     >
     {% endif %}
@@ -69,7 +69,8 @@
 <li class="list-inline-item">
   <a
     class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
-    href="{% url 'view_bag' %}">
+    href="{% url 'view_bag' %}"
+  >
     <div class="text-center">
       <div><i class="fas fa-shopping-bag fa-lg"></i></div>
       <p class="my-0">
