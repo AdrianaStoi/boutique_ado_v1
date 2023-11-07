@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import stripe
 import os
+import dj_database_url
 from pathlib import Path
 if os.path.isfile('env.py'):
     import env
@@ -29,7 +30,7 @@ SECRET_KEY = 'django-insecure-88(sxw1^x=pzp(5piywx_d9#9lkz_r&x-y!&a7*5q!h(dry&z=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-adrianastoi-boutique-ado-d9oeosvktg.us2.codeanyapp.com']
+ALLOWED_HOSTS = ['my-boutique-ado-7a7e1c385e21.herokuapp.com', '8000-adrianastoi-boutique-ado-d9oeosvktg.us2.codeanyapp.com']
 
 
 # Application definition
@@ -122,12 +123,18 @@ WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
